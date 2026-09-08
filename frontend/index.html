@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LexConnect — Online Case Management System</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     LANDING PAGE
+════════════════════════════════════════════ -->
+<div id="landing">
+  <nav class="landing-nav">
+    <div class="logo">
+      <div class="logo-icon">⚖️</div>
+      <div class="logo-text">Lex<span>Connect</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="landing-hero">
+    <div class="hero-badge">⚖️ &nbsp; Online Case Management System</div>
+    <h1 class="hero-title">Legal Help,<br/>Now <span class="accent">Accessible</span><br/>to Everyone</h1>
+    <p class="hero-subtitle">Connect with verified lawyers, submit cases online, track status in real-time, and resolve small disputes through our Jansabha Panel.</p>
+
+    <div class="portal-cards">
+      <div class="portal-card" onclick="openModal('client-login')">
+        <span class="portal-card-icon">👤</span>
+        <div class="portal-card-title">Client Portal</div>
+        <p class="portal-card-desc">Submit cases, track status, book appointments with verified lawyers.</p>
+        <button class="portal-card-btn">Enter as Client</button>
+      </div>
+
+      <div class="portal-card" onclick="openModal('lawyer-login')">
+        <span class="portal-card-icon">👨‍⚖️</span>
+        <div class="portal-card-title">Lawyer Portal</div>
+        <p class="portal-card-desc">Review case requests, accept or reject, manage your schedule.</p>
+        <button class="portal-card-btn">Enter as Lawyer</button>
+      </div>
+
+      <div class="portal-card" onclick="openModal('admin-login')">
+        <span class="portal-card-icon">🛡️</span>
+        <div class="portal-card-title">Admin Portal</div>
+        <p class="portal-card-desc">Monitor all users, manage cases, oversee the Jansabha Panel.</p>
+        <button class="portal-card-btn">Admin Login</button>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num" id="stat-lawyers">—</div>
+        <div class="stat-label">Lawyers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-cases">—</div>
+        <div class="stat-label">Cases Filed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-resolved">—</div>
+        <div class="stat-label">Resolved</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     AUTH MODALS
+════════════════════════════════════════════ -->
+
+<!-- CLIENT LOGIN -->
+<div class="modal-overlay" id="modal-client-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('client-login')">✕</button>
+    <div class="modal-logo"><div class="modal-logo-icon">⚖️</div><div class="modal-logo-text">Lex<span>Connect</span></div></div>
+    <h2 class="modal-title">Client Login</h2>
+    <p class="modal-subtitle">Access your case dashboard</p>
+    <div class="alert alert-error" id="client-login-err"></div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input class="form-input" id="cl-email" type="email" placeholder="you@example.com"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input class="form-input" id="cl-pass" type="password" placeholder="Enter password"/>
+    </div>
+    <button class="btn-primary" onclick="loginClient()">Sign In</button>
+    <div class="modal-switch">Don't have an account? <a onclick="switchModal('client-login','client-register')">Register here</a></div>
+  </div>
+</div>
+
+<!-- CLIENT REGISTER -->
+<div class="modal-overlay" id="modal-client-register">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('client-register')">✕</button>
+    <div class="modal-logo"><div class="modal-logo-icon">⚖️</div><div class="modal-logo-text">Lex<span>Connect</span></div></div>
+    <h2 class="modal-title">Register as Client</h2>
+    <p class="modal-subtitle">Create your account to get started</p>
+    <div class="alert alert-error" id="client-reg-err"></div>
+    <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="cr-name" placeholder="Rajesh Kumar"/></div>
+    <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="cr-email" type="email" placeholder="you@example.com"/></div>
+    <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" id="cr-phone" placeholder="+91 98765 43210"/></div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="cr-pass" type="password" placeholder="Min. 6 characters"/></div>
+    <button class="btn-primary" onclick="registerClient()">Create Account</button>
+    <div class="modal-switch">Already have an account? <a onclick="switchModal('client-register','client-login')">Login here</a></div>
+  </div>
+</div>
+
+<!-- LAWYER LOGIN -->
+<div class="modal-overlay" id="modal-lawyer-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('lawyer-login')">✕</button>
+    <div class="modal-logo"><div class="modal-logo-icon">⚖️</div><div class="modal-logo-text">Lex<span>Connect</span></div></div>
+    <h2 class="modal-title">Lawyer Login</h2>
+    <p class="modal-subtitle">Access your case management portal</p>
+    <div class="alert alert-error" id="lawyer-login-err"></div>
+    <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="ll-email" type="email" placeholder="advocate@example.com"/></div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="ll-pass" type="password" placeholder="Enter password"/></div>
+    <button class="btn-primary" onclick="loginLawyer()">Sign In</button>
+    <div class="modal-switch">New advocate? <a onclick="switchModal('lawyer-login','lawyer-register')">Register here</a></div>
+  </div>
+</div>
+
+<!-- LAWYER REGISTER -->
+<div class="modal-overlay" id="modal-lawyer-register">
+  <div class="modal" style="max-width:500px">
+    <button class="modal-close" onclick="closeModal('lawyer-register')">✕</button>
+    <div class="modal-logo"><div class="modal-logo-icon">⚖️</div><div class="modal-logo-text">Lex<span>Connect</span></div></div>
+    <h2 class="modal-title">Register as Lawyer</h2>
+    <p class="modal-subtitle">Join our network of verified advocates</p>
+    <div class="alert alert-error" id="lawyer-reg-err"></div>
+    <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="lr-name" placeholder="Enter your full name"/></div>
+    <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="lr-email" type="email" placeholder="advocate@example.com"/></div>
+    <div class="form-group"><label class="form-label">Bar Registration Number</label><input class="form-input" id="lr-bar" placeholder="BCI/UK/2024/12345"/></div>
+    <div class="form-group">
+      <label class="form-label">Specialization</label>
+      <select class="form-select" id="lr-spec">
+        <option value="">Select specialization</option>
+        <option>Criminal Law</option><option>Family Law</option><option>Civil Law</option>
+        <option>Cyber Law</option><option>Consumer Law</option><option>Property Law</option>
+        <option>Labour Law</option><option>Constitutional Law</option>
+      </select>
+    </div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="lr-pass" type="password" placeholder="Min. 6 characters"/></div>
+    <button class="btn-primary" onclick="registerLawyer()">Register</button>
+    <div class="modal-switch">Already registered? <a onclick="switchModal('lawyer-register','lawyer-login')">Login here</a></div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="modal-overlay" id="modal-admin-login">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('admin-login')">✕</button>
+    <div class="modal-logo"><div class="modal-logo-icon">⚖️</div><div class="modal-logo-text">Lex<span>Connect</span></div></div>
+    <h2 class="modal-title">Admin Login</h2>
+    <p class="modal-subtitle">Restricted access — authorized personnel only</p>
+    <div class="alert alert-error" id="admin-login-err"></div>
+    <div class="form-group"><label class="form-label">Admin Username</label><input class="form-input" id="al-user" placeholder="admin"/></div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="al-pass" type="password" placeholder="admin123"/></div>
+    <p style="font-size:12px;color:var(--text-light);margin-bottom:16px;">Default: admin / admin123</p>
+    <button class="btn-primary" onclick="loginAdmin()">Sign In</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     APP SHELL
+════════════════════════════════════════════ -->
+<div id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon">⚖️</div>
+      <div class="sidebar-brand-text">Lex<span>Connect</span></div>
+    </div>
+    <div class="sidebar-user">
+      <div class="avatar" id="sidebar-avatar">U</div>
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-name" id="sidebar-name">User</div>
+        <div class="sidebar-user-role" id="sidebar-role">Role</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer">
+      <button class="btn-logout" onclick="logout()">🚪 &nbsp; Sign Out</button>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-title" id="topbar-title">Dashboard</div>
+      <div class="topbar-right">
+        <div class="topbar-date" id="topbar-date"></div>
+      </div>
+    </header>
+    <div class="content-area" id="content-area"></div>
+  </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="detail-modal" id="detail-modal">
+  <div class="detail-box" id="detail-box"></div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

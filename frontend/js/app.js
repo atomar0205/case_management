@@ -1,16 +1,16 @@
 // ═══════════════════════════════════════════════════════════
-// app.js  —  LexConnect Frontend Application
+// app.js  —  lawconnect Frontend Application
 // All API calls go to the Express backend at BASE_URL
 // ═══════════════════════════════════════════════════════════
 
 const BASE_URL = 'http://localhost:5000/api';
 
 // ─── Auth token helpers ───────────────────────────────────
-function getToken()        { return localStorage.getItem('lex_token'); }
-function setToken(t)       { localStorage.setItem('lex_token', t); }
-function clearToken()      { localStorage.removeItem('lex_token'); localStorage.removeItem('lex_user'); }
-function getUser()         { try { return JSON.parse(localStorage.getItem('lex_user')); } catch { return null; } }
-function setUser(u)        { localStorage.setItem('lex_user', JSON.stringify(u)); }
+function getToken()        { return localStorage.getItem('lawconnect_token'); }
+function setToken(t)       { localStorage.setItem('lawconnect_token', t); }
+function clearToken()      { localStorage.removeItem('lawconnect_token'); localStorage.removeItem('lawconnect_user'); }
+function getUser()         { try { return JSON.parse(localStorage.getItem('lawconnect_user')); } catch { return null; } }
+function setUser(u)        { localStorage.setItem('lawconnect_user', JSON.stringify(u)); }
 
 let currentUser = getUser();
 
@@ -655,7 +655,7 @@ async function renderAdminDashboard() {
   `).join('') || emptyRow('📭', 'No cases yet', 6);
 
   return `
-    <div class="page-header"><h1>Admin Dashboard</h1><p>System overview — LexConnect Case Management System.</p></div>
+    <div class="page-header"><h1>Admin Dashboard</h1><p>System overview — lawconnect.</p></div>
     <div class="stats-grid">
       <div class="stat-card accent-navy"><div class="stat-card-accent"></div><div class="stat-card-icon">👨‍⚖️</div><div class="stat-card-value">${lawyers.length}</div><div class="stat-card-label">Registered Lawyers</div></div>
       <div class="stat-card accent-gold"><div class="stat-card-accent"></div><div class="stat-card-icon">👤</div><div class="stat-card-value">${clients.length}</div><div class="stat-card-label">Registered Clients</div></div>

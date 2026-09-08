@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-// server.js  —  LexConnect Backend Entry Point
+// server.js  —  lawconnect Backend Entry Point
 //
 // Usage:
 //   npm install
@@ -59,7 +59,7 @@ app.get('/api/stats', (_req, res) => {
 
 // ── Health Check ──────────────────────────────────────────
 app.get('/api/health', (_req, res) => {
-  res.json({ success: true, message: 'LexConnect API is running.', timestamp: new Date().toISOString() });
+  res.json({ success: true, message: 'lawconnect API is running.', timestamp: new Date().toISOString() });
 });
 
 // ── 404 Handler ───────────────────────────────────────────
@@ -76,13 +76,13 @@ app.use((err, _req, res, _next) => {
 // ── Start ─────────────────────────────────────────────────
 app.listen(PORT, () => {
   console.log('');
-  console.log('  ⚖️  LexConnect Backend API');
+  console.log('  ⚖️  lawconnect Backend API');
   console.log(`  🚀  Running on http://localhost:${PORT}`);
   console.log(`  📡  Health: http://localhost:${PORT}/api/health`);
   console.log('');
   console.log('  Demo credentials:');
   console.log('  Client  → amit@client.com  / pass123');
-  console.log('  Lawyer  → neha@lex.com     / pass123');
+  console.log('  Lawyer  → neha@case-management.local  / pass123');
   console.log('  Admin   → admin            / admin123');
   console.log('');
 });

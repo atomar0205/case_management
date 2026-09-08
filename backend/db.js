@@ -18,7 +18,7 @@ const db = {
     {
       id: 'l1',
       name: 'Adv. Neha Sharma',
-      email: 'neha@lex.com',
+      email: 'neha@case-management.local',
       // plain: pass123
       password: bcrypt.hashSync('pass123', 10),
       bar: 'BCI/UK/2020/001',
@@ -30,7 +30,7 @@ const db = {
     {
       id: 'l2',
       name: 'Adv. Ravi Gupta',
-      email: 'ravi@lex.com',
+      email: 'ravi@case-management.local',
       password: bcrypt.hashSync('pass123', 10),
       bar: 'BCI/UK/2019/002',
       spec: 'Family Law',
@@ -41,7 +41,7 @@ const db = {
     {
       id: 'l3',
       name: 'Adv. Sunita Rawat',
-      email: 'sunita@lex.com',
+      email: 'sunita@case-management.local',
       password: bcrypt.hashSync('pass123', 10),
       bar: 'BCI/UK/2021/003',
       spec: 'Cyber Law',

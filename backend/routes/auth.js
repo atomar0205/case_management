@@ -131,11 +131,11 @@ router.post('/login/admin', (req, res) => {
   if (username !== ADMIN_USER || password !== ADMIN_PASS)
     return res.status(401).json({ success: false, message: 'Invalid admin credentials.' });
 
-  const token = signToken({ id: 'admin', name: 'System Admin', email: 'admin@lexconnect.gov.in', role: 'admin' });
+  const token = signToken({ id: 'admin', name: 'System Admin', email: 'admin@case-management.local', role: 'admin' });
   return res.json({
     success: true,
     token,
-    user: { id: 'admin', name: 'System Admin', email: 'admin@lexconnect.gov.in', role: 'admin' }
+    user: { id: 'admin', name: 'System Admin', email: 'admin@case-management.local', role: 'admin' }
   });
 });
 

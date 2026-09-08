@@ -1,6 +1,6 @@
-# LexConnect
+# lawconnect
 
-LexConnect is a full-stack online case management system. It enables clients to submit and track legal cases, lawyers to manage case requests, and administrators to oversee users, cases, and Jansabha disputes.
+This full-stack online case management system enables clients to submit and track legal cases, lawyers to manage case requests, and administrators to oversee users, cases, and Jansabha disputes.
 
 ## Features
 
@@ -23,7 +23,7 @@ LexConnect is a full-stack online case management system. It enables clients to 
 ## Project Structure
 
 ```text
-lexconnect/
+lawconnect/
 |-- frontend/
 |   |-- index.html
 |   |-- style.css

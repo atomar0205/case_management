@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════════════════════
 
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET || 'lexconnect_secret_key_2024';
+const JWT_SECRET = process.env.JWT_SECRET || 'lawconnect_secret_key_2024';
 
 /**
  * verifyToken — protects any route that requires login.

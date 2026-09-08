@@ -1,7 +1,7 @@
 {
-  "name": "lexconnect-backend",
+  "name": "lawconnect-backend",
   "version": "1.0.0",
-  "description": "LexConnect Case Management System - Backend API",
+  "description": "lawconnect Backend API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

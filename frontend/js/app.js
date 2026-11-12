@@ -3,7 +3,7 @@
 // All API calls go to the Express backend at BASE_URL
 // ═══════════════════════════════════════════════════════════
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'https://case-management-cn5u.vercel.app/api';
 
 // ─── Auth token helpers ───────────────────────────────────
 function getToken()        { return localStorage.getItem('lawconnect_token'); }
